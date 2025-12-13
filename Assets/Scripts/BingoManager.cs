@@ -64,32 +64,55 @@ public class BingoManager : SingletonBase<BingoManager>
     // ゲーム中に番号が呼ばれた時の処理
     public void OpenNumber(string targetId)
     {
-        bool isfind = false;
         var card = _bingoCard.Value;
         if (card == null) return;
+
+        bool isFoundOnCard = false; // カードの中にそのIDが存在したか
 
         // 全マス走査して一致するIDを探す
         foreach (var square in card)
         {
-            if (square.IsOpen.Value)
+            // まずIDが一致するかどうかをチェック
+            if (square.ID == targetId)
             {
-                isfind = true;
-            }
-            else if (square.ID == targetId)
-            {
-                // ★ここが重要：個別のマスのフラグを立てる
-                // これにより、このマスをSubscribeしているViewだけに通知が飛ぶ
+                isFoundOnCard = true;
 
-                square.IsOpen.Value = true;
-                isfind = true;
+                // まだ空いていない場合のみ処理する
+                if (!square.IsOpen.Value)
+                {
+                    square.IsOpen.Value = true;
+                    Debug.Log($"{targetId}が空きました");
 
-                Debug.Log($"{targetId}が空きました");
+                    // 正解（赤）にする
+                    BuildingManager.Instance.ChangeColorBuilding(targetId, Color.red);
+                }
+                else
+                {
+                    Debug.Log($"{targetId}は既に空いています");
+                }
+
+                // IDはユニーク（1つしかない）はずなので、見つかったらループを抜け
             }
         }
 
-        if(IsBingo())GameManager.Instance.FinishGame();
+        // --- ループ終了後の判定 ---
 
-        if(!isfind) TimerManager.Instance.PenaltyTime();
+        if (isFoundOnCard)
+        {
+            // カードにあった場合：ビンゴ判定を行う
+            if (IsBingo())
+            {
+                GameManager.Instance.FinishGame();
+                Debug.Log("Clear");
+            }
+        }
+        else
+        {
+            // カードになかった場合（お手つき）：ペナルティ処理
+            // ここで初めて「不正解の色（黒）」にする
+            BuildingManager.Instance.ChangeColorBuilding(targetId, Color.black);
+            TimerManager.Instance.PenaltyTime();
+        }
     }
 
     private bool IsBingo()

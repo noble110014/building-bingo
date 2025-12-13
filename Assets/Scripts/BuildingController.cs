@@ -1,3 +1,4 @@
+using Cinemachine;
 using PLATEAU.CityGML;
 using PLATEAU.CityInfo;
 using System.Collections;
@@ -12,9 +13,15 @@ public class BuildingController : MonoBehaviour
 
     private PLATEAUCityObjectGroup info;
 
+    private MeshRenderer mr;
+
+    private CinemachineImpulseSource source;
+
     public void Initialize()
     {
         info = GetComponent<PLATEAUCityObjectGroup>();
+        mr = GetComponent<MeshRenderer>();
+        source = GetComponent<CinemachineImpulseSource>();
         SetBuildingID();
     }
 
@@ -64,6 +71,18 @@ public class BuildingController : MonoBehaviour
     public void Action()
     {
         BingoManager.Instance.OpenNumber(buildingID);
+        
+    }
+
+    public void ChangeBuildingColor(Color color)
+    {
+        mr.material.color = color;
+        if (color == Color.black)
+        {
+            source.GenerateImpulse();
+            Destroy(gameObject);
+        }
+        
     }
 
     [ContextMenu("DebugSetBuildingID")]

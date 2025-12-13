@@ -24,6 +24,14 @@ public class BuildingManager : SingletonBase<BuildingManager>
         return ids.Distinct().ToArray();
     }
 
+    public void ChangeColorBuilding(string id, Color color)
+    {
+        foreach (var controller in _controllers)
+        {
+            if (controller.BuildingID == id) controller.ChangeBuildingColor(color);
+        }
+    }
+
     [ContextMenu("DebugGetAllBuildingIDArray")]
     private void DebugGetAllBuildingsIDArray()
     {
