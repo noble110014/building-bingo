@@ -16,16 +16,23 @@ public class GameManager : SingletonBase<GameManager>
             .Subscribe(value =>
             {
                 FinishGame();
+                Debug.Log("GameOver!");
             })
             .AddTo(this);
     }
     public void FinishGame()
     {
         _isGameFinished.Value = true;
+        TimerManager.Instance.StopTimer();
     }
 
     public void ResetGame()
     {
         _isGameFinished.Value = false;
+    }
+
+    public void StartGame()
+    {
+        BingoManager.Instance.SetBingoCard(BuildingManager.Instance.GetAllBuildingIDArray());
     }
 }

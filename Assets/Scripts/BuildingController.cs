@@ -60,6 +60,12 @@ public class BuildingController : MonoBehaviour
         }
     }
 
+    [ContextMenu("open bingocard")]
+    public void Action()
+    {
+        BingoManager.Instance.OpenNumber(buildingID);
+    }
+
     [ContextMenu("DebugSetBuildingID")]
     private void DebugSetBuildingID()
     {

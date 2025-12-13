@@ -33,7 +33,7 @@ public class BingoManager : SingletonBase<BingoManager>
                 // 中央のマス
                 if (i == 2 && j == 2)
                 {
-                    var freeSquare = new BingoSquare("〇");
+                    var freeSquare = new BingoSquare("");
                     freeSquare.IsOpen.Value = true; // 最初から開けておく
                     newCard[i, j] = freeSquare;
                     continue;
@@ -71,14 +71,17 @@ public class BingoManager : SingletonBase<BingoManager>
         // 全マス走査して一致するIDを探す
         foreach (var square in card)
         {
-            // IDが一致し、かつまだ開いていない場合
-            if (square.ID == targetId && !square.IsOpen.Value)
+            if (square.IsOpen.Value)
+            {
+                isfind = true;
+            }
+            else if (square.ID == targetId)
             {
                 // ★ここが重要：個別のマスのフラグを立てる
                 // これにより、このマスをSubscribeしているViewだけに通知が飛ぶ
 
                 square.IsOpen.Value = true;
-                isfind= true;
+                isfind = true;
 
                 Debug.Log($"{targetId}が空きました");
             }

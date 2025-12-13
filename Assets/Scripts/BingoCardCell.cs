@@ -23,7 +23,7 @@ public class BingoCardCell : MonoBehaviour
         squareData.IsOpen
             .Subscribe(isOpen =>
             {
-                numberText.text = "ÅZ";
+                if(isOpen) numberText.color = Color.red;
             })
             .AddTo(this);
     }

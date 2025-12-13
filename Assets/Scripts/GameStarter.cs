@@ -5,14 +5,14 @@ using UnityEngine;
 public class GameStarter : MonoBehaviour
 {
     // Start is called before the first frame update
+    [ContextMenu("DebugStartGame")]
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        BuildingManager.Instance.Initialize();
+        TimerManager.Instance.Initialize();
+        GameManager.Instance.Initialize();
+        BingoManager.Instance.Initialize();
+        GameManager.Instance.StartGame();
+        TimerManager.Instance.StartTimer();
     }
 }

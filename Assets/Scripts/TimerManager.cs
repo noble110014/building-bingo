@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using TMPro;
 
 public class TimerManager : SingletonBase<TimerManager>
 {
@@ -17,6 +18,8 @@ public class TimerManager : SingletonBase<TimerManager>
     [SerializeField] private int timeLimit = 60;
     [SerializeField] private int penaltySecond = 5;
     public int TimeLimit { get; set; }
+
+    [SerializeField] private TextMeshProUGUI timerText;
 
     public void Initialize()
     {
@@ -37,7 +40,7 @@ public class TimerManager : SingletonBase<TimerManager>
                 {
                     _countdownTimePrep.Value -= (int)_accumulatedTime;
                     _accumulatedTime -= (int)_accumulatedTime;
-                    Debug.Log(_countdownTimePrep.Value);
+                    timerText.text = ToMin(_countdownTimePrep.Value);
                 }
             })
             .AddTo(_compositeDisposable);
@@ -63,5 +66,10 @@ public class TimerManager : SingletonBase<TimerManager>
     {
         _compositeDisposable.Dispose();
         base.OnDestroy();
+    }
+
+    private string ToMin(int sec)
+    {
+        return ((sec / 60).ToString("D2") + ":" + (sec % 60).ToString("D2"));
     }
 }
