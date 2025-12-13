@@ -32,7 +32,7 @@ public class BuildingManager : SingletonBase<BuildingManager>
         string result = "";
         foreach (var id in array)
         {
-            result += (id) + " ";
+            result += (id) + ",";
         }
 
         Debug.Log(result);
