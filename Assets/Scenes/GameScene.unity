@@ -77441,10 +77441,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1683268515}
+  - component: {fileID: 1683268517}
   - component: {fileID: 1683268519}
   - component: {fileID: 1683268518}
-  - component: {fileID: 1683268517}
   - component: {fileID: 1683268516}
+  - component: {fileID: 1683268520}
   m_Layer: 0
   m_Name: bldg_0ac45daa-3120-4813-85bb-f785187656ac
   m_TagString: Untagged
@@ -77559,6 +77560,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683268514}
   m_Mesh: {fileID: -3285930326755530317, guid: 60e2b1e9fcfc9ee4ea0252a5edbe3339, type: 3}
+--- !u!114 &1683268520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683268514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20fc92a7cf4c154c9bc90d91948b567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1684834071
 GameObject:
   m_ObjectHideFlags: 0

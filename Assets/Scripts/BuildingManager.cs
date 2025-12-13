@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class BuildingManager : MonoBehaviour
+public class BuildingManager : SingletonBase<BuildingManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    private List<BuildingController> _controllers = new List<BuildingController>();
+
+    public void Initialize()
     {
-        
+        _controllers = FindObjectsByType<BuildingController>(FindObjectsSortMode.None).ToList();
     }
 
-    // Update is called once per frame
-    void Update()
+    public string[] GetAllBuildingIDArray()
     {
-        
+        List<string> ids = new List<string>();
+        foreach (var controller in _controllers)
+        {
+            controller.Initialize();
+            ids.Add(controller.BuildingID);
+        }
+
+        return ids.Distinct().ToArray();
     }
 }
