@@ -61,7 +61,7 @@ public class BuildingController : MonoBehaviour
     }
 
     [ContextMenu("DebugSetBuildingID")]
-    public void DebugSetBuildingID()
+    private void DebugSetBuildingID()
     {
         Initialize();
         SetBuildingID();

@@ -23,4 +23,18 @@ public class BuildingManager : SingletonBase<BuildingManager>
 
         return ids.Distinct().ToArray();
     }
+
+    [ContextMenu("DebugGetAllBuildingIDArray")]
+    private void DebugGetAllBuildingsIDArray()
+    {
+        Initialize();
+        var array = GetAllBuildingIDArray();
+        string result = "";
+        foreach (var id in array)
+        {
+            result += (id) + " ";
+        }
+
+        Debug.Log(result);
+    }
 }
