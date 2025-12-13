@@ -15,6 +15,7 @@ public class TimerManager : SingletonBase<TimerManager>
     private float _accumulatedTime = 0f;
 
     [SerializeField] private int timeLimit = 60;
+    [SerializeField] private int penaltySecond = 5;
     public int TimeLimit { get; set; }
 
     public void Initialize()
@@ -51,6 +52,11 @@ public class TimerManager : SingletonBase<TimerManager>
     {
         _compositeDisposable.Clear();
         _countdownTimePrep.Value = 0;
+    }
+
+    public void PenaltyTime()
+    {
+        _countdownTimePrep.Value -= penaltySecond;
     }
 
     protected override void OnDestroy()

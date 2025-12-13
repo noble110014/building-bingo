@@ -64,6 +64,7 @@ public class BingoManager : SingletonBase<BingoManager>
     // ゲーム中に番号が呼ばれた時の処理
     public void OpenNumber(string targetId)
     {
+        bool isfind = false;
         var card = _bingoCard.Value;
         if (card == null) return;
 
@@ -77,12 +78,15 @@ public class BingoManager : SingletonBase<BingoManager>
                 // これにより、このマスをSubscribeしているViewだけに通知が飛ぶ
 
                 square.IsOpen.Value = true;
+                isfind= true;
 
                 Debug.Log($"{targetId}が空きました");
-
-                var bingo = IsBingo();
             }
         }
+
+        if(IsBingo())GameManager.Instance.FinishGame();
+
+        if(!isfind) TimerManager.Instance.PenaltyTime();
     }
 
     private bool IsBingo()
