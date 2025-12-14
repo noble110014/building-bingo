@@ -137,7 +137,7 @@ namespace StarterAssets
             }
         }
 
-        private void Start()
+        public void Initialize()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             

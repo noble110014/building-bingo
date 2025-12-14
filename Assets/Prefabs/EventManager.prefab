@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f3c33aa17f14a419889f57701ae05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventInterval: 2
-  eventTime: 10
+  eventInterval: 3
+  eventTime: 5

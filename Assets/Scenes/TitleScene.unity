@@ -207,8 +207,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 967744443970019264, guid: 2f31acea2ed83704a999f0ad3daa6353,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e893c5443fb6dd54eb35c7e5db332eff,
+        type: 3}
+    - target: {fileID: 967744443970019264, guid: 2f31acea2ed83704a999f0ad3daa6353,
+        type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1405329279326112397, guid: 2f31acea2ed83704a999f0ad3daa6353,
         type: 3}
@@ -309,6 +315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251687504748516771, guid: 2f31acea2ed83704a999f0ad3daa6353,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6324453394563829970, guid: 2f31acea2ed83704a999f0ad3daa6353,
         type: 3}
@@ -785,6 +796,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7312b8b239c3b4f96992accf98a669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  animDuration: 0.1
+  animEase: 6
   clickedEvent:
     m_PersistentCalls:
       m_Calls:

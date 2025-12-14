@@ -115,7 +115,7 @@ public class BingoManager : SingletonBase<BingoManager>
         }
     }
 
-    private bool IsBingo()
+    public bool IsBingo()
     {
         var card = _bingoCard.Value;
         int size = bingoCardSquareNum;
