@@ -5,7 +5,7 @@ using UniRx;
 
 public class BingoCardCell : MonoBehaviour
 {
-    private TextMeshProUGUI numberText;
+    public TextMeshProUGUI numberText;
 
     public void Initialize()
     {

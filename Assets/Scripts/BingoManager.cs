@@ -177,6 +177,11 @@ public class BingoManager : SingletonBase<BingoManager>
 
         return false;
     }
+
+    public void ChangeBingoTextColor(string id,Color color)
+    {
+        bingoCardView.AccessBingoCardTextColor(id, color);
+    }
 }
 
 // 1マスごとのデータを管理するクラス

@@ -82,7 +82,8 @@ public class BuildingController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (color == Color.red) return;
+        if (mr.material.color == Color.red) return;
+
         mr.material.color = color;
         
     }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using JetBrains.Annotations;
 
 [RequireComponent(typeof(BingoManager))]
 public class BingoCardView : MonoBehaviour
@@ -49,6 +50,17 @@ public class BingoCardView : MonoBehaviour
                 // 3. データとUIを紐付ける (Bind)
                 cellView.Initialize();
                 cellView.Bind(squareData);
+            }
+        }
+    }
+
+    public void AccessBingoCardTextColor(string id, Color color)
+    {
+        foreach (var cell in bingoCardCells)
+        {
+            if(cell.numberText.text == id)
+            {
+                cell.ChangeTextColor(color);
             }
         }
     }

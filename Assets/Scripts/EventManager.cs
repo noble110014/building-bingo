@@ -136,10 +136,12 @@ public class EventManager : SingletonBase<EventManager>
         // 6. 見つかった場合のみ実行 (nullチェック)
         if (result != null)
         {
-            // 第2引数(Color)が必要なはずなので追加してください（例：青にする）
-            BuildingManager.Instance.ChangeColorBuilding(result.ID, Color.blue);
             eventBuildingID = result.ID;
 
+            BingoManager.Instance.ChangeBingoTextColor(eventBuildingID, Color.blue);
+            // 第2引数(Color)が必要なはずなので追加してください（例：青にする）
+            BuildingManager.Instance.ChangeColorBuilding(result.ID, Color.blue);
+            
             Debug.Log($"イベント発生: {result.ID} が選ばれました");
         }
     }
@@ -148,6 +150,7 @@ public class EventManager : SingletonBase<EventManager>
     private void OnEventEnd()
     {
         BuildingManager.Instance.ChangeColorBuilding(eventBuildingID, Color.white);
+        BingoManager.Instance.ChangeBingoTextColor(eventBuildingID, Color.black);
 
     }
 
