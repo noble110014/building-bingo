@@ -76,12 +76,14 @@ public class BuildingController : MonoBehaviour
 
     public void ChangeBuildingColor(Color color)
     {
-        mr.material.color = color;
         if (color == Color.black)
         {
             source.GenerateImpulse();
             Destroy(gameObject);
         }
+
+        if (color == Color.red) return;
+        mr.material.color = color;
         
     }
 

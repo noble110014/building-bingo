@@ -1,4 +1,6 @@
 ﻿ using UnityEngine;
+using UniRx;
+using UniRx.Triggers;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -123,6 +125,8 @@ namespace StarterAssets
             }
         }
 
+        private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();
+
 
         private void Awake()
         {
@@ -151,15 +155,24 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+
+            this.UpdateAsObservable()
+            .Where(_ => !GameManager.Instance.IsGameFinished.Value)
+            .Subscribe(_ =>
+            {
+                _hasAnimator = TryGetComponent(out _animator);
+
+                JumpAndGravity();
+                GroundedCheck();
+                Move();
+            })
+            .AddTo(_compositeDisposable);
         }
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
-
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
+            
         }
 
         private void LateUpdate()

@@ -13,6 +13,7 @@ public class GameStarter : MonoBehaviour
         GameManager.Instance.Initialize();
         BingoManager.Instance.Initialize();
         TimerManager.Instance.StartTimer();
+        EventManager.Instance.StartEvent();
         GameManager.Instance.StartGame();
         
     }

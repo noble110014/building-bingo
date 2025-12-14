@@ -23,8 +23,13 @@ public class BingoCardCell : MonoBehaviour
         squareData.IsOpen
             .Subscribe(isOpen =>
             {
-                if(isOpen) numberText.color = Color.red;
+                if(isOpen) ChangeTextColor(Color.red);
             })
             .AddTo(this);
+    }
+
+    public void ChangeTextColor(Color color)
+    {
+        numberText.color = color;
     }
 }

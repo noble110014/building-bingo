@@ -24,6 +24,7 @@ public class GameManager : SingletonBase<GameManager>
     {
         _isGameFinished.Value = true;
         TimerManager.Instance.StopTimer();
+        EventManager.Instance.StopEvent();
     }
 
     public void ResetGame()
