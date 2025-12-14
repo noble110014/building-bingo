@@ -78057,9 +78057,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1125043411}
+  - component: {fileID: 1125043413}
   - component: {fileID: 1125043415}
   - component: {fileID: 1125043414}
-  - component: {fileID: 1125043413}
   - component: {fileID: 1125043412}
   - component: {fileID: 1125043416}
   - component: {fileID: 1125043417}
@@ -131565,9 +131565,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1867953756}
+  - component: {fileID: 1867953758}
   - component: {fileID: 1867953760}
   - component: {fileID: 1867953759}
-  - component: {fileID: 1867953758}
   - component: {fileID: 1867953757}
   - component: {fileID: 1867953761}
   - component: {fileID: 1867953762}
