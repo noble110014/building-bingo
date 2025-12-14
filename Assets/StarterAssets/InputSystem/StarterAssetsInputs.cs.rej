@@ -1,0 +1,19 @@
+diff a/Assets/StarterAssets/InputSystem/StarterAssetsInputs.cs b/Assets/StarterAssets/InputSystem/StarterAssetsInputs.cs	(rejected hunks)
+@@ -76,16 +76,6 @@
+ 		{
+ 			punch = newPunchState;
+ 		}
+-
+-		private void OnApplicationFocus(bool hasFocus)
+-		{
+-			SetCursorState(cursorLocked);
+-		}
+-
+-		private void SetCursorState(bool newState)
+-		{
+-			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+-		}
+ 	}
+ 	
+ }
+\ No newline at end of file
